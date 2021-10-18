@@ -13,7 +13,7 @@ interface Note {
 const parseNoteFile = async (dirName: string, year: string, file: string): Promise<Note> => {
   const contents = await readFile(join(".", dirName, year, file), "utf8");
   const date = new Date(
-    execSync(`git log --format=%aD ${dirName}/${year}/${file}} | tail -1`).toString().trim()
+    execSync(`git log --format=%aD ${dirName}/${year}/${file} | tail -1`).toString().trim()
   );
   return {
     slug: file,
